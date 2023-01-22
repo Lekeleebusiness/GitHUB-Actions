@@ -42,11 +42,11 @@ jobs:
           mkdir _gh_pages
           echo "Job: ${{ job.name }} Build: ${{ env.BUILD_NUMBER }}" > _gh_pages/version.txt
           
-#       - name: Publish to S3
-#         uses: s3-sync-action/s3-sync-action@v2
-#         with:
-#           args: --delete
-#           access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#           secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#           bucket_name: my-s3-bucket-name
-#           local_dir: _gh_pages
+      - name: Publish to S3
+        uses: s3-sync-action/s3-sync-action@v2
+        with:
+         args: --delete
+         access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+         secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+         bucket_name: my-s3-bucket-name
+         local_dir: _gh_pages
