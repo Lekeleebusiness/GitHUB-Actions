@@ -40,5 +40,7 @@ jobs:
           mkdir _gh_pages
           echo "Job: ${{ job.name }} Build: ${{ env.BUILD_NUMBER }}" > _gh_pages/version.txt
           
+      - name: Sync files with S3
+        run: aws s3 sync . s3://Bootstrap_bucket
 
 
