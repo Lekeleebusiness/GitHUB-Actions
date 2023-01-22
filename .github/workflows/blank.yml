@@ -27,8 +27,8 @@ jobs:
           sudo echo 'export GEM_HOME="$HOME/gems"' >> ~/.bashrc 
           sudo echo 'export PATH="$HOME/gems/bin:$PATH"' >> ~/.bashrc
 
-          sudo gem install jekyll bundler -y 
-          sudo apt-get install rubygems
+          sudo gem install jekyll bundler 
+          sudo apt-get install rubygems -y
           
       
       - name: Clone repository
