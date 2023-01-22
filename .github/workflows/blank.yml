@@ -21,15 +21,14 @@ jobs:
       - name: Install Ruby, RubyGems, and Jekyll
         run: |
           sudo apt-get update
-          sudo apt-get install -y ruby-full ruby-dev build-essential
-          sudo apt-get install ruby-full build-essential zlib1g-dev -y 
-          sudo echo '# Install Ruby Gems to ~/gems' >> ~/.bashrc
-          sudo echo 'export GEM_HOME="$HOME/gems"' >> ~/.bashrc 
-          sudo echo 'export PATH="$HOME/gems/bin:$PATH"' >> ~/.bashrc
 
-          sudo gem install jekyll bundler 
-          sudo apt-get install rubygems -y
-          
+          sudo apt remove ruby bundler jekyll --purge
+          sudo rm -rf ~/.gem ~/.ruby ~/.rvm
+          sudo apt clean && sudo apt autoremove && sudo apt autoclean
+          gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+
+          sudo curl -sSL https://get.rvm.io | bash -s stable --ruby
+          gem install bundler jekyll
       
       - name: Clone repository
         run: git clone git@github.com:twbs/bootstrap.git
