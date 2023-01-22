@@ -22,14 +22,13 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y ruby-full ruby-dev build-essential
-          sudo apt-get install ruby-full build-essential zlib1g-dev
+          sudo apt-get install ruby-full build-essential zlib1g-dev -y 
           sudo echo '# Install Ruby Gems to ~/gems' >> ~/.bashrc
           sudo echo 'export GEM_HOME="$HOME/gems"' >> ~/.bashrc 
           sudo echo 'export PATH="$HOME/gems/bin:$PATH"' >> ~/.bashrc
           sudo source ~/.bashrc
-          sudo gem install jekyll bundler
+          sudo gem install jekyll bundler -y 
           sudo apt-get install -y rubygems
-          sudo gem install jekyll bundler
           
       
       - name: Clone repository
