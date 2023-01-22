@@ -10,8 +10,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        with:
-          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
           
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
