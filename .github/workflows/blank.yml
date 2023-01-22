@@ -17,17 +17,23 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: "eu-central-1"
-          
+      - name: Clone repository
+        run: git clone https://github.com/twbs/bootstrap.git   
+        
       - name: Install Ruby, RubyGems, and Jekyll
         run: |
-          sudo apt-get update
-          sudo apt-get install -y ruby-full ruby-dev build-essential
-          sudo apt-get install -y rubygems
-          sudo gem install jekyll bundler
-      
-      - name: Clone repository
-        run: git clone git@github.com:twbs/bootstrap.git
-        
+          sudo apt update
+          sudo apt install ruby-full
+          ruby --version
+          sudo apt install rubygems -y
+          sudo apt-get install ruby-full build-essential zlib1g-dev
+          echo '# Install Ruby Gems to ~/gems' >> ~/.bashrc
+          echo 'export GEM_HOME="$HOME/gems"' >> ~/.bashrc
+          echo 'export PATH="$HOME/gems/bin:$PATH"' >> ~/.bashrc
+          sudo -s
+          sudo source ~/.bashrc
+          exit
+    
       - name: Build Jekyll
         run: |
           cd bootstrap
